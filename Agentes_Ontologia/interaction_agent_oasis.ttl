@@ -1,0 +1,32 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:interaction_agent a oasis:Agent ;
+    rdfs:label "interaction_agent" ;
+    oasis:hasBehavior ex:interaction_agent_Behavior ;
+    oasis:hasCategory "interaction" ;
+    oasis:hasParameter ex:interaction_agent_max_tokens,
+        ex:interaction_agent_temperature ;
+    oasis:providesService ex:interaction_agent_Service ;
+    oasis:usesResource ex:groq_llama-3_3-70b-versatile ;
+    rdfs:comment "General-purpose assistant that helps users with various tasks, can use external tools when needed" .
+
+ex:groq_llama-3_3-70b-versatile a oasis:Resource ;
+    rdfs:label "groq/llama-3.3-70b-versatile" .
+
+ex:interaction_agent_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "General-purpose assistant that helps users with various tasks, can use external tools when needed You are AMALIA's interaction agent. Be direct and concise." ;
+    rdfs:comment "General-purpose assistant that helps users with various tasks, can use external tools when needed You are AMALIA's interaction agent. Be direct and concise." .
+
+ex:interaction_agent_Service a oasis:Service .
+
+ex:interaction_agent_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 1000 .
+
+ex:interaction_agent_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.5"^^xsd:float .
+

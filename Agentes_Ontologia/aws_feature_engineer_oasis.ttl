@@ -1,0 +1,33 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:aws_feature_engineer a oasis:Agent ;
+    rdfs:label "aws_feature_engineer" ;
+    oasis:hasBehavior ex:aws_feature_engineer_Behavior ;
+    oasis:hasCategory "data_processing" ;
+    oasis:hasParameter ex:aws_feature_engineer_max_tokens,
+        ex:aws_feature_engineer_temperature ;
+    oasis:providesService ex:aws_feature_engineer_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "External agent simulating AWS feature engineering utilities" .
+
+ex:aws_feature_engineer_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "External agent simulating AWS feature engineering utilities You are a feature engineering agent. Create, transform, and standardize features." ;
+    rdfs:comment "External agent simulating AWS feature engineering utilities You are a feature engineering agent. Create, transform, and standardize features." .
+
+ex:aws_feature_engineer_Service a oasis:Service ;
+    oasis:isGroundedAt <http://extagents:9000/agents/aws_feature_engineer/execute> .
+
+ex:aws_feature_engineer_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 1200 .
+
+ex:aws_feature_engineer_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.3"^^xsd:float .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+

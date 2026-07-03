@@ -1,0 +1,33 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:google_data_validator a oasis:Agent ;
+    rdfs:label "google_data_validator" ;
+    oasis:hasBehavior ex:google_data_validator_Behavior ;
+    oasis:hasCategory "data_quality" ;
+    oasis:hasParameter ex:google_data_validator_max_tokens,
+        ex:google_data_validator_temperature ;
+    oasis:providesService ex:google_data_validator_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "External agent simulating Google Cloud data validation" .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+
+ex:google_data_validator_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "External agent simulating Google Cloud data validation You are a data validation agent. Validate schemas, types, and basic quality checks." ;
+    rdfs:comment "External agent simulating Google Cloud data validation You are a data validation agent. Validate schemas, types, and basic quality checks." .
+
+ex:google_data_validator_Service a oasis:Service ;
+    oasis:isGroundedAt <http://extagents:9000/agents/google_data_validator/execute> .
+
+ex:google_data_validator_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 1000 .
+
+ex:google_data_validator_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.2"^^xsd:float .
+

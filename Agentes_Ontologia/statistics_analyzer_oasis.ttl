@@ -1,0 +1,32 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:statistics_analyzer a oasis:Agent ;
+    rdfs:label "statistics_analyzer" ;
+    oasis:hasBehavior ex:statistics_analyzer_Behavior ;
+    oasis:hasCategory "data_analysis" ;
+    oasis:hasParameter ex:statistics_analyzer_max_tokens,
+        ex:statistics_analyzer_temperature ;
+    oasis:providesService ex:statistics_analyzer_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "Generates comprehensive statistical analysis of datasets" .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+
+ex:statistics_analyzer_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "Generates comprehensive statistical analysis of datasets You are a statistical analysis expert specializing in descriptive statistics and data profiling." ;
+    rdfs:comment "Generates comprehensive statistical analysis of datasets You are a statistical analysis expert specializing in descriptive statistics and data profiling." .
+
+ex:statistics_analyzer_Service a oasis:Service .
+
+ex:statistics_analyzer_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 3000 .
+
+ex:statistics_analyzer_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.2"^^xsd:float .
+

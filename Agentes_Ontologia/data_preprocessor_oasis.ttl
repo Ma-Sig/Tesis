@@ -1,0 +1,44 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:data_preprocessor a oasis:Agent ;
+    rdfs:label "data_preprocessor" ;
+    oasis:hasBehavior ex:data_preprocessor_Behavior ;
+    oasis:hasCategory "data_processing" ;
+    oasis:hasParameter ex:data_preprocessor_max_tokens,
+        ex:data_preprocessor_temperature ;
+    oasis:hasTool ex:tool_csv_reader,
+        ex:tool_data_analyzer,
+        ex:tool_data_transformer ;
+    oasis:providesService ex:data_preprocessor_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "Expert agent for data cleaning, transformation, and preprocessing tasks" .
+
+ex:data_preprocessor_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "Expert agent for data cleaning, transformation, and preprocessing tasks You are a data preprocessing expert specializing in cleaning and transforming datasets." ;
+    rdfs:comment "Expert agent for data cleaning, transformation, and preprocessing tasks You are a data preprocessing expert specializing in cleaning and transforming datasets." .
+
+ex:data_preprocessor_Service a oasis:Service .
+
+ex:data_preprocessor_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 2000 .
+
+ex:data_preprocessor_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.3"^^xsd:float .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+
+ex:tool_csv_reader a oasis:Tool ;
+    rdfs:label "csv_reader" .
+
+ex:tool_data_analyzer a oasis:Tool ;
+    rdfs:label "data_analyzer" .
+
+ex:tool_data_transformer a oasis:Tool ;
+    rdfs:label "data_transformer" .
+

@@ -1,0 +1,74 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:model_trainer a oasis:Agent ;
+    rdfs:label "model_trainer" ;
+    oasis:hasBehavior ex:model_trainer_Behavior ;
+    oasis:hasCategory "modeling" ;
+    oasis:hasParameter ex:model_trainer_max_tokens,
+        ex:model_trainer_replication_model_path,
+        ex:model_trainer_replication_predictions_path,
+        ex:model_trainer_replication_random_seed,
+        ex:model_trainer_replication_test_split,
+        ex:model_trainer_replication_train_split,
+        ex:model_trainer_replication_validation_split,
+        ex:model_trainer_temperature ;
+    oasis:hasTool ex:tool_hyperparameter_optimizer,
+        ex:tool_model_evaluator,
+        ex:tool_model_trainer ;
+    oasis:providesService ex:model_trainer_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "Agent specialized in training machine learning models" .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+
+ex:model_trainer_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "Agent specialized in training machine learning models You are a machine learning expert specializing in model training and optimization." ;
+    rdfs:comment "Agent specialized in training machine learning models You are a machine learning expert specializing in model training and optimization." .
+
+ex:model_trainer_Service a oasis:Service .
+
+ex:model_trainer_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 3000 .
+
+ex:model_trainer_replication_model_path a oasis:Parameter ;
+    rdfs:label "model_path" ;
+    oasis:hasValue "/models/model_trainer.pkl"^^xsd:string .
+
+ex:model_trainer_replication_predictions_path a oasis:Parameter ;
+    rdfs:label "predictions_path" ;
+    oasis:hasValue "/predictions/model_trainer_predictions.csv"^^xsd:string .
+
+ex:model_trainer_replication_random_seed a oasis:Parameter ;
+    rdfs:label "random_seed" ;
+    oasis:hasValue 42 .
+
+ex:model_trainer_replication_test_split a oasis:Parameter ;
+    rdfs:label "test_split" ;
+    oasis:hasValue "0.1"^^xsd:float .
+
+ex:model_trainer_replication_train_split a oasis:Parameter ;
+    rdfs:label "train_split" ;
+    oasis:hasValue "0.8"^^xsd:float .
+
+ex:model_trainer_replication_validation_split a oasis:Parameter ;
+    rdfs:label "validation_split" ;
+    oasis:hasValue "0.1"^^xsd:float .
+
+ex:model_trainer_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.5"^^xsd:float .
+
+ex:tool_hyperparameter_optimizer a oasis:Tool ;
+    rdfs:label "hyperparameter_optimizer" .
+
+ex:tool_model_evaluator a oasis:Tool ;
+    rdfs:label "model_evaluator" .
+
+ex:tool_model_trainer a oasis:Tool ;
+    rdfs:label "model_trainer" .
+

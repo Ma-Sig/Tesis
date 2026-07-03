@@ -1,0 +1,32 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:planner_agent a oasis:Agent ;
+    rdfs:label "planner_agent" ;
+    oasis:hasBehavior ex:planner_agent_Behavior ;
+    oasis:hasCategory "planning" ;
+    oasis:hasParameter ex:planner_agent_max_tokens,
+        ex:planner_agent_temperature ;
+    oasis:providesService ex:planner_agent_Service ;
+    oasis:usesResource ex:groq_llama-3_3-70b-versatile ;
+    rdfs:comment "Hidden agent that creates execution plans from refined user requirements" .
+
+ex:groq_llama-3_3-70b-versatile a oasis:Resource ;
+    rdfs:label "groq/llama-3.3-70b-versatile" .
+
+ex:planner_agent_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "Hidden agent that creates execution plans from refined user requirements You are AMALIA's planner agent. Create structured execution plans from user requirements." ;
+    rdfs:comment "Hidden agent that creates execution plans from refined user requirements You are AMALIA's planner agent. Create structured execution plans from user requirements." .
+
+ex:planner_agent_Service a oasis:Service .
+
+ex:planner_agent_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 2000 .
+
+ex:planner_agent_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.4"^^xsd:float .
+

@@ -1,0 +1,44 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:model_evaluator a oasis:Agent ;
+    rdfs:label "model_evaluator" ;
+    oasis:hasBehavior ex:model_evaluator_Behavior ;
+    oasis:hasCategory "evaluation" ;
+    oasis:hasParameter ex:model_evaluator_max_tokens,
+        ex:model_evaluator_temperature ;
+    oasis:hasTool ex:tool_metrics_calculator,
+        ex:tool_model_evaluator,
+        ex:tool_visualization_generator ;
+    oasis:providesService ex:model_evaluator_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "Agent for evaluating and comparing machine learning models" .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+
+ex:model_evaluator_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "Agent for evaluating and comparing machine learning models You are a model evaluation expert specializing in assessing ML model performance." ;
+    rdfs:comment "Agent for evaluating and comparing machine learning models You are a model evaluation expert specializing in assessing ML model performance." .
+
+ex:model_evaluator_Service a oasis:Service .
+
+ex:model_evaluator_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 2500 .
+
+ex:model_evaluator_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.2"^^xsd:float .
+
+ex:tool_metrics_calculator a oasis:Tool ;
+    rdfs:label "metrics_calculator" .
+
+ex:tool_model_evaluator a oasis:Tool ;
+    rdfs:label "model_evaluator" .
+
+ex:tool_visualization_generator a oasis:Tool ;
+    rdfs:label "visualization_generator" .
+

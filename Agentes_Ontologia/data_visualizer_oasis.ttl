@@ -1,0 +1,44 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:data_visualizer a oasis:Agent ;
+    rdfs:label "data_visualizer" ;
+    oasis:hasBehavior ex:data_visualizer_Behavior ;
+    oasis:hasCategory "visualization" ;
+    oasis:hasParameter ex:data_visualizer_max_tokens,
+        ex:data_visualizer_temperature ;
+    oasis:hasTool ex:tool_chart_generator,
+        ex:tool_data_analyzer,
+        ex:tool_statistics_calculator ;
+    oasis:providesService ex:data_visualizer_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "Agent specialized in creating data visualizations and charts" .
+
+ex:data_visualizer_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "Agent specialized in creating data visualizations and charts You are a data visualization expert specializing in creating meaningful charts and visual insights." ;
+    rdfs:comment "Agent specialized in creating data visualizations and charts You are a data visualization expert specializing in creating meaningful charts and visual insights." .
+
+ex:data_visualizer_Service a oasis:Service .
+
+ex:data_visualizer_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 2000 .
+
+ex:data_visualizer_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.4"^^xsd:float .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+
+ex:tool_chart_generator a oasis:Tool ;
+    rdfs:label "chart_generator" .
+
+ex:tool_data_analyzer a oasis:Tool ;
+    rdfs:label "data_analyzer" .
+
+ex:tool_statistics_calculator a oasis:Tool ;
+    rdfs:label "statistics_calculator" .
+

@@ -1,0 +1,32 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:missing_values_detector a oasis:Agent ;
+    rdfs:label "missing_values_detector" ;
+    oasis:hasBehavior ex:missing_values_detector_Behavior ;
+    oasis:hasCategory "data_analysis" ;
+    oasis:hasParameter ex:missing_values_detector_max_tokens,
+        ex:missing_values_detector_temperature ;
+    oasis:providesService ex:missing_values_detector_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "Identifies and reports missing values in datasets" .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+
+ex:missing_values_detector_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "Identifies and reports missing values in datasets You are a missing values detection expert specializing in data quality analysis." ;
+    rdfs:comment "Identifies and reports missing values in datasets You are a missing values detection expert specializing in data quality analysis." .
+
+ex:missing_values_detector_Service a oasis:Service .
+
+ex:missing_values_detector_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 2000 .
+
+ex:missing_values_detector_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.2"^^xsd:float .
+

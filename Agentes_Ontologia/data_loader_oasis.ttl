@@ -1,0 +1,40 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:data_loader a oasis:Agent ;
+    rdfs:label "data_loader" ;
+    oasis:hasBehavior ex:data_loader_Behavior ;
+    oasis:hasCategory "data_processing" ;
+    oasis:hasParameter ex:data_loader_max_tokens,
+        ex:data_loader_temperature ;
+    oasis:hasTool ex:tool_csv_reader,
+        ex:tool_file_parser ;
+    oasis:providesService ex:data_loader_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "Agent specialized in loading and parsing CSV data files" .
+
+ex:data_loader_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "Agent specialized in loading and parsing CSV data files You are a data loader expert specializing in reading and parsing CSV files using MCP filesystem tools." ;
+    rdfs:comment "Agent specialized in loading and parsing CSV data files You are a data loader expert specializing in reading and parsing CSV files using MCP filesystem tools." .
+
+ex:data_loader_Service a oasis:Service .
+
+ex:data_loader_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 2000 .
+
+ex:data_loader_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.2"^^xsd:float .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+
+ex:tool_csv_reader a oasis:Tool ;
+    rdfs:label "csv_reader" .
+
+ex:tool_file_parser a oasis:Tool ;
+    rdfs:label "file_parser" .
+

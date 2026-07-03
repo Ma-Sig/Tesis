@@ -1,0 +1,13 @@
+name: anthropic_summarizer
+description: External agent simulating Anthropic summarization service
+model: gemini/gemini-2.5-flash-lite
+provider: anthropic
+remote_endpoint: http://extagents:9000/agents/anthropic_summarizer/execute
+system_prompt: 'You are a summarization agent. Produce concise summaries of inputs.
+
+  '
+tools: []
+temperature: 0.2
+max_tokens: 800
+metadata:
+  category: analysis

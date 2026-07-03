@@ -1,0 +1,33 @@
+@prefix ex: <http://example.org/agents#> .
+@prefix oasis: <http://www.dmi.unict.it/oasis.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:anthropic_summarizer a oasis:Agent ;
+    rdfs:label "anthropic_summarizer" ;
+    oasis:hasBehavior ex:anthropic_summarizer_Behavior ;
+    oasis:hasCategory "analysis" ;
+    oasis:hasParameter ex:anthropic_summarizer_max_tokens,
+        ex:anthropic_summarizer_temperature ;
+    oasis:providesService ex:anthropic_summarizer_Service ;
+    oasis:usesResource ex:gemini_gemini-2_5-flash-lite ;
+    rdfs:comment "External agent simulating Anthropic summarization service" .
+
+ex:anthropic_summarizer_Behavior a oasis:Behavior ;
+    oasis:hasConstraint "External agent simulating Anthropic summarization service You are a summarization agent. Produce concise summaries of inputs." ;
+    rdfs:comment "External agent simulating Anthropic summarization service You are a summarization agent. Produce concise summaries of inputs." .
+
+ex:anthropic_summarizer_Service a oasis:Service ;
+    oasis:isGroundedAt <http://extagents:9000/agents/anthropic_summarizer/execute> .
+
+ex:anthropic_summarizer_max_tokens a oasis:Parameter ;
+    rdfs:label "max_tokens" ;
+    oasis:hasValue 800 .
+
+ex:anthropic_summarizer_temperature a oasis:Parameter ;
+    rdfs:label "temperature" ;
+    oasis:hasValue "0.2"^^xsd:float .
+
+ex:gemini_gemini-2_5-flash-lite a oasis:Resource ;
+    rdfs:label "gemini/gemini-2.5-flash-lite" .
+

@@ -1,0 +1,14 @@
+name: google_data_validator
+description: External agent simulating Google Cloud data validation
+model: gemini/gemini-2.5-flash-lite
+provider: google
+remote_endpoint: http://extagents:9000/agents/google_data_validator/execute
+system_prompt: 'You are a data validation agent. Validate schemas, types, and basic
+  quality checks.
+
+  '
+tools: []
+temperature: 0.2
+max_tokens: 1000
+metadata:
+  category: data_quality

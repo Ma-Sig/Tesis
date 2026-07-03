@@ -1,0 +1,5 @@
+# FastMCP framework for MCP server implementation
+fastmcp==3.0.0b2
+
+# Data processing
+pandas>=2.0.0

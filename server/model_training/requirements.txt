@@ -1,0 +1,7 @@
+# FastMCP framework for MCP server implementation
+fastmcp==3.0.0b2
+
+# Data processing and ML
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
